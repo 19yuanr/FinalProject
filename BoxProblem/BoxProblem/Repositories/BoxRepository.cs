@@ -1,5 +1,6 @@
 ﻿using System;
 using BoxProblem.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BoxProblem.Repositories
 {
@@ -22,6 +23,10 @@ namespace BoxProblem.Repositories
         }
         public BoxInventory GetBoxById(int id){
             return dbContext.Boxes.Find(id);
+        }
+        public void SaveEdits(BoxInventory toSave){
+            dbContext.Entry(toSave).State = EntityState.Modified;
+            dbContext.SaveChanges();
         }
     }
 }

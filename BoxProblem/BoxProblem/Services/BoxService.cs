@@ -20,5 +20,8 @@ namespace BoxProblem.Services
         public BoxInventory GetBoxById(int id){
             return repository.GetBoxById(id);
         }
+        public void SaveEdits(BoxInventory toSave){
+            repository.SaveEdits(toSave);
+        }
     }
 }

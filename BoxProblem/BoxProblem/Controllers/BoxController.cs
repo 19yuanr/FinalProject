@@ -26,6 +26,10 @@ namespace BoxProblem.Controllers
             BoxInventory box = service.GetBoxById(id);
             return View(box);
         }
+        public ActionResult Edit(int id){
+            BoxInventory box = service.GetBoxById(id);
+            return View(box);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -33,6 +37,14 @@ namespace BoxProblem.Controllers
             if(ModelState.IsValid)
             {
                 service.AddBox(box);
+                return RedirectToAction("Index");
+            }
+            return View(box);
+        }
+        [HttpPost]
+        public ActionResult Edit(BoxInventory box){
+          if (ModelState.IsValid){
+                service.SaveEdits(box);
                 return RedirectToAction("Index");
             }
             return View(box);
