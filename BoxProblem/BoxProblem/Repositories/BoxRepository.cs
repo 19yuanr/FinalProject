@@ -37,6 +37,13 @@ namespace BoxProblem.Repositories
             var results = dbContext.Boxes.Where(s => s.Cost == temp);
             return results.ToList();
         }
+        
+        public List<BoxInventory> SearchDateTime(DateTime temp)
+        {
+            var results = dbContext.Boxes.Where(s => s.CreatedAt == temp);
+            return results.ToList();
+        }
+
     }
 }
 

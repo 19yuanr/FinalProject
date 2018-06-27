@@ -33,5 +33,10 @@ namespace BoxProblem.Services
             return repository.SearchCost(temp);
         }
 
+        public List<BoxInventory> Search(string temp)
+        {
+            DateTime newTemp = DateTime.Parse(temp);
+            return repository.SearchDateTime(newTemp);
+        }
     }
 }
