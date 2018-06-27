@@ -16,4 +16,7 @@
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove=":Users:brettkoppelman:Documents:Repositories:FinalProject:BoxProblem:BoxProblem:Controllers:BoxController.cs" />
+  </ItemGroup>
 </Project>
