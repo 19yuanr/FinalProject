@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using BoxProblem.Data;
 
 namespace BoxProblem.Repositories
@@ -7,6 +9,10 @@ namespace BoxProblem.Repositories
     {
         private Data.ApplicationDbContext dbContext;
 
+        public List<BoxInventory> GetAllBoxes()
+        {
+            return dbContext.Boxes.ToList();
+        }
         public BoxRepository(ApplicationDbContext context)
         {
             dbContext = context;
