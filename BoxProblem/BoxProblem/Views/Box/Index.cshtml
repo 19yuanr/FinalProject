@@ -1,53 +1,54 @@
 ﻿@model IEnumerable<BoxProblem.Data.BoxInventory>
 
 @{
-	ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home Page";
 }
 <body class="style">
     <hr class="=top" />
     <h1 class="header">Cardboard Box Making Company</h1>
     <hr class="bottom" />
-    <div class="row">
-        @Html.ActionLink("Create New", "Create")
-    </div>
+    <input type="text" placeholder="Search.." >
+    <input type="submit" onclick="Search()" />
+    @Html.ActionLink("Create New", "Create")
+
 </body>
 <table class="table">
-	<tr>
-		<th>
-			@Html.DisplayNameFor(model => model.Weight)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.Volume)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.CanHoldLiquid)
-		</th>
-		<th>
-			@Html.DisplayNameFor(model => model.CreatedAt)
-		</th>
-		<th></th>
-	</tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Volume)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CanHoldLiquid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </th>
+        <th></th>
+    </tr>
 
-	@foreach (var item in Model)
-	{
-		<tr>
-			<td>
-				@Html.DisplayFor(modelItem => item.Weight)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.Volume)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.CanHoldLiquid)
-			</td>
-			<td>
-				@Html.DisplayFor(modelItem => item.CreatedAt)
-			</td>
-			<td>
-				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.Id })
-			</td>
-		</tr>
-	}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Volume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CanHoldLiquid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
