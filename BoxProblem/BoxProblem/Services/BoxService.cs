@@ -17,5 +17,8 @@ namespace BoxProblem.Services
         {
             repository.AddBox(toAdd);
         }
+        public BoxInventory GetBoxById(int id){
+            return repository.GetBoxById(id);
+        }
     }
 }

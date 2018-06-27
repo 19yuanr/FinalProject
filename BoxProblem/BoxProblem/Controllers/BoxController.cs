@@ -22,6 +22,10 @@ namespace BoxProblem.Controllers
         {
             return View();
         }
+        public ActionResult Delete(int id){
+            BoxInventory box = service.GetBoxById(id);
+            return View(box);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
