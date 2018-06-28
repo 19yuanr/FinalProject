@@ -65,6 +65,14 @@ namespace BoxProblem.Controllers
             return View(service.GetAllBoxes());
 
         }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            BoxInventory box = service.GetBoxById(id);
+            service.DeleteBox(box);
+            return RedirectToAction("Index");
+        }
 
     }
 }

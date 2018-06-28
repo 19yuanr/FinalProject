@@ -48,7 +48,8 @@ namespace BoxProblem.Repositories
             dbContext.Boxes.Remove(toDelete);
             dbContext.SaveChanges();
         }
-        public BoxInventory GetBoxById(int id){
+        public BoxInventory GetBoxById(int id)
+        {
             return dbContext.Boxes.Find(id);
         }
     }
