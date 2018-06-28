@@ -11,15 +11,15 @@ namespace BoxProblem.Data
         [Key]
         public int Id { get; set; }
 
-        [Range(0,1000)]
+        [Range(0,int.MaxValue, ErrorMessage = "Weight Can Not Be Negative")]
         public int Weight { get; set; }
 
-        [Range(0,20000)]
+        [Range(0,int.MaxValue, ErrorMessage = "Volume Can Not Be Negative")]
         public int Volume { get; set; }
 
         public bool CanHoldLiquid { get; set; }
 
-        [Range(0,999999999)]
+        [Range(0,int.MaxValue, ErrorMessage = "Cost Can not Be Negative")]
         public double Cost { get; set; }
 
         public int InventoryCount { get; set; }
