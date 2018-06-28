@@ -18,7 +18,7 @@ namespace BoxProblem.Services
         public List<BoxInventory> Search(int temp)
         {
             List<BoxInventory> result = repository.SearchWeight(temp);
-            List<BoxInventory> result1 = repository.SearchVolume(temp));
+            List<BoxInventory> result1 = repository.SearchVolume(temp);
             var finalResult = result.Union(result1);
             return finalResult.ToList();
         }
@@ -42,11 +42,6 @@ namespace BoxProblem.Services
         {
             return repository.GetAllBoxes();
         }
-        public BoxService(ApplicationDbContext context)
-        {
-            repository = new BoxRepository(context);
-        }
-
         public void AddBox(BoxInventory toAdd)
         {
             repository.AddBox(toAdd);

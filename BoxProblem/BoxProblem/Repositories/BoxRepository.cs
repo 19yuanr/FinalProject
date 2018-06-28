@@ -10,10 +10,6 @@ namespace BoxProblem.Repositories
     {
         private Data.ApplicationDbContext dbContext;
 
-        public BoxRepository(ApplicationDbContext context)
-        {
-        }
-
         public List<BoxInventory> SearchWeight(int temp)
         {
             var results = dbContext.Boxes.Where(s => s.Weight == temp);
