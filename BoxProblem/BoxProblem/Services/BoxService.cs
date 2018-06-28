@@ -17,7 +17,9 @@ namespace BoxProblem.Services
         public List<BoxInventory> GetAllBoxes()
         {
             return repository.GetAllBoxes();
+
         }
+
         public void AddBox(BoxInventory toAdd)
         {
             repository.AddBox(toAdd);
@@ -25,5 +27,9 @@ namespace BoxProblem.Services
         public BoxInventory GetBoxById(int id){
             return repository.GetBoxById(id);
         }
+        public void DeleteBox(BoxInventory toDelete){
+            repository.DeleteBox(toDelete);
+        }
     }
 }
+

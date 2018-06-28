@@ -61,12 +61,18 @@ namespace BoxProblem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(BoxInventory box)
         {
-            if (ModelState.IsValid && box.Cost > 0 && box.Volume > 0 && box.Weight > 0)
-            {
-                service.AddBox(box);
-                return RedirectToAction("Index");
-            }
-            return View("Create",box);
+
+            return View(service.GetAllBoxes());
+
         }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            BoxInventory box = service.GetBoxById(id);
+            service.DeleteBox(box);
+            return RedirectToAction("Index");
+        }
+
     }
 }
