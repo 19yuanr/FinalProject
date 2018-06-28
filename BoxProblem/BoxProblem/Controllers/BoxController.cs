@@ -28,6 +28,8 @@ namespace BoxProblem.Controllers
         {
             return View();
         }
+
+
         public ActionResult Delete(int id){
             BoxInventory box = service.GetBoxById(id);
             return View(box);
@@ -35,13 +37,15 @@ namespace BoxProblem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(BoxInventory box){
-            if(ModelState.IsValid)
+        public ActionResult Create(BoxInventory box)
+        {
+            if (ModelState.IsValid && box.Cost > 0 && box.Volume > 0 && box.Weight > 0)
             {
                 service.AddBox(box);
                 return RedirectToAction("Index");
             }
-            return View(box);
+            TempData["Message"] = "Invalid Input";
+            return View("Create",box);
         }
     }
 }
