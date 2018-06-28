@@ -12,7 +12,6 @@ namespace BoxProblem.Controllers
 {
     public class BoxController : Controller
     {
-
         private BoxService service;
         public ActionResult Index(int search1, bool? search2, string search3)
         {
@@ -34,5 +33,34 @@ namespace BoxProblem.Controllers
 
         }
 
+        public BoxController(ApplicationDbContext context){
+            service = new BoxService(context);
+        }
+
+        public ActionResult Index()
+        {
+            return View(service.GetAllBoxes());
+
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        public ActionResult Delete(int id){
+            BoxInventory box = service.GetBoxById(id);
+            return View(box);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(BoxInventory box){
+            if(ModelState.IsValid)
+            {
+                service.AddBox(box);
+                return RedirectToAction("Index");
+            }
+            return View(box);
+        }
     }
 }
