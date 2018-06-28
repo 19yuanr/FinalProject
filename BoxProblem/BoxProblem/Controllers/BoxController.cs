@@ -13,13 +13,55 @@ namespace BoxProblem.Controllers
     public class BoxController : Controller
     {
         private BoxService service;
-
-        public BoxController(ApplicationDbContext context){
+        private Data.ApplicationDbContext dbContext;
+        public BoxController(ApplicationDbContext context)
+        {
             service = new BoxService(context);
+            dbContext = context;
+        }
+        public ActionResult Index(string searchBy, int search)
+        {
+
+            List<BoxInventory> finalList = service.GetAllBoxes();
+            if (searchBy == "Weight")
+            {
+                finalList = service.GetAllBoxes().Where(s => s.Weight == search).ToList();
+            }
+            if (searchBy == "Volume")
+            {
+                finalList = service.GetAllBoxes().Where(s => s.Volume == search).ToList();
+            }
+            if (searchBy == "Cost" )
+            {
+                finalList = service.GetAllBoxes().Where(s => s.Cost == search).ToList();
+            }
+            if(searchBy=="Reset")
+            {
+                finalList = service.GetAllBoxes();
+            }
+
+            return View(finalList);
+
         }
 
-        public ActionResult Index()
+       
+
+        public ActionResult Create()
         {
+            return View();
+        }
+
+
+        public ActionResult Delete(int id){
+            BoxInventory box = service.GetBoxById(id);
+            return View(box);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(BoxInventory box)
+        {
+
             return View(service.GetAllBoxes());
 
         }
@@ -53,3 +95,14 @@ namespace BoxProblem.Controllers
         }
     }
 }
+
+            if (ModelState.IsValid && box.Cost > 0 && box.Volume > 0 && box.Weight > 0)
+            {
+                service.AddBox(box);
+                return RedirectToAction("Index");
+            }
+            return View("Create",box);
+        }
+    }
+}
+

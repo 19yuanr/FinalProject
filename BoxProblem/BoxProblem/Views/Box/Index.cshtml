@@ -1,16 +1,31 @@
 ﻿@model IEnumerable<BoxProblem.Data.BoxInventory>
 
 @{
-	ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home Page";
 }
-<body class="style">
-    <hr class="=top" />
+<div class="style">
+    <hr class="top" />
     <h1 class="header">Cardboard Box Making Company</h1>
     <hr class="bottom" />
     <div class="row">
         @Html.ActionLink("Create New", "Create")
     </div>
-</body>
+    @using (Html.BeginForm("Index", "Box", FormMethod.Get))
+    {
+        <b>Search</b>
+        @Html.RadioButton("searchBy", "Weight", true) <text> Weight </text>
+
+        @Html.RadioButton("searchBY", "Volume", true) <text> Volume </text>
+
+        @Html.RadioButton("searchBy", "Cost", true) <text> Cost </text>
+
+        @Html.RadioButton("searchBy", "Reset", true)<text>Reset</text>
+        <input type="search" name="search" placeholder="Enter Value" />
+        <input type="submit" />
+    }
+
+</div>
+
 <table class="table">
 	<tr>
 		<th>
@@ -21,6 +36,9 @@
 		</th>
 		<th>
 			@Html.DisplayNameFor(model => model.CanHoldLiquid)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model=> model.Cost)
 		</th>
 		<th>
 			@Html.DisplayNameFor(model => model.CreatedAt)
@@ -41,6 +59,9 @@
 				@Html.DisplayFor(modelItem => item.CanHoldLiquid)
 			</td>
 			<td>
+				@Html.DisplayFor(modelItem => item.Cost)
+			</td>
+			<td>
 				@Html.DisplayFor(modelItem => item.CreatedAt)
 			</td>
 			<td>
@@ -49,5 +70,6 @@
 			</td>
 		</tr>
 	}
+
 
 </table>
