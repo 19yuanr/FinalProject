@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,30 @@ namespace BoxProblem.Controllers
 
         public BoxController(ApplicationDbContext context){
             service = new BoxService(context);
+        }
+        public ActionResult Index(string searchBy, int search)
+        {
+
+            List<BoxInventory> finalList = service.GetAllBoxes();
+            if (searchBy == "Weight")
+            {
+                finalList = service.GetAllBoxes().Where(s => s.Weight == search).ToList();
+            }
+            if (searchBy == "Volume")
+            {
+                finalList = service.GetAllBoxes().Where(s => s.Volume == search).ToList();
+            }
+            if (searchBy == "Cost" )
+            {
+                finalList = service.GetAllBoxes().Where(s => s.Cost == search).ToList();
+            }
+            if(searchBy=="Reset")
+            {
+                finalList = service.GetAllBoxes();
+            }
+
+            return View(finalList);
+
         }
 
         public ActionResult Create()
@@ -51,3 +76,4 @@ namespace BoxProblem.Controllers
         }
     }
 }
+

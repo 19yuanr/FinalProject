@@ -1,5 +1,7 @@
-﻿using System;
-using BoxProblem.Data;
+﻿using BoxProblem.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace BoxProblem.Repositories
@@ -12,7 +14,10 @@ namespace BoxProblem.Repositories
         {
             dbContext = context;
         }
-
+        public List<BoxInventory> GetAllBoxes()
+        {
+            return dbContext.Boxes.ToList();
+        }
         public void AddBox(BoxInventory toAdd){
             dbContext.Boxes.Add(toAdd);
             dbContext.SaveChanges();
@@ -30,4 +35,3 @@ namespace BoxProblem.Repositories
         }
     }
 }
-

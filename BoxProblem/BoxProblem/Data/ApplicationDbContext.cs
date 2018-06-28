@@ -15,6 +15,7 @@ namespace BoxProblem.Data
         }
 
         public DbSet<BoxInventory> Boxes { get; set; }
+        public object Students { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
