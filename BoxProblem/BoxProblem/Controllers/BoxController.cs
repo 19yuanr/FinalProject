@@ -13,39 +13,34 @@ namespace BoxProblem.Controllers
     public class BoxController : Controller
     {
         private BoxService service;
-        public ActionResult Index(int search1, bool? search2, string search3, double search4)
+        private Data.ApplicationDbContext dbContext;
+        public BoxController(ApplicationDbContext context)
+        {
+            service = new BoxService(context);
+            dbContext = context;
+        }
+        public ActionResult Index(string searchBy, int search)
         {
 
-            List<BoxInventory> finalList = service.GetAllBoxes();
-            if (search1 != 0)
+            var finalList = service.GetAllBoxes();
+            if (searchBy == "Weight" && search >= 0)
             {
-                finalList = service.SearchWeightVolume(search1);
+                finalList = service.GetAllBoxes().Where(s => s.Weight == search).ToList();
             }
-            if (search2 != null)
+            if (searchBy == "Volume" && search >= 0)
             {
-                finalList = service.SearchCanHoldLiquid(search2);
+                finalList = service.GetAllBoxes().Where(s => s.Volume == search).ToList();
             }
-            if (search2 != null)
+            if (searchBy == "Cost" && search >= 0)
             {
-                finalList = service.Search(search3);
+                finalList = service.GetAllBoxes().Where(s => s.Cost == search).ToList();
             }
-            if(search4 != 0.0)
-            {
-                finalList = service.SearchCost(search4);
-            }
+
             return View(finalList);
 
         }
 
-        public BoxController(ApplicationDbContext context){
-            service = new BoxService(context);
-        }
-
-        public ActionResult Index()
-        {
-            return View(service.GetAllBoxes());
-
-        }
+       
 
         public ActionResult Create()
         {

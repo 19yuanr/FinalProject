@@ -15,29 +15,6 @@ namespace BoxProblem.Services
             repository = new BoxRepository(context);
         }
 
-        public List<BoxInventory> SearchWeightVolume(int temp)
-        {
-            List<BoxInventory> result = repository.SearchWeight(temp);
-            List<BoxInventory> result1 = repository.SearchVolume(temp);
-            var finalResult = result.Union(result1);
-            return finalResult.ToList();
-        }
-
-        public List<BoxInventory> SearchCanHoldLiquid(bool? temp)
-        {
-            return repository.SearchCanHoldLiquid(temp);
-        }
-
-        public List<BoxInventory> SearchCost(double temp)
-        {
-            return repository.SearchCost(temp);
-        }
-
-        public List<BoxInventory> Search(string temp)
-        {
-            DateTime newTemp = DateTime.Parse(temp);
-            return repository.SearchDateTime(newTemp);
-        }
         public List<BoxInventory> GetAllBoxes()
         {
             return repository.GetAllBoxes();

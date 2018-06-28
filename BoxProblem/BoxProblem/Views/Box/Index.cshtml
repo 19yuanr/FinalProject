@@ -10,15 +10,15 @@
     <div class="row">
         @Html.ActionLink("Create New", "Create")
     </div>
-   @using (Html.BeginForm("Index", "Box", FormMethod.Get))
+    <input type="search"/>
+    @using (Html.BeginForm("Index", "Box", FormMethod.Get))
     {
-       <b>Search</b>
-        @Html.RadioButton("searchby", "Search", true)<text>Search</text>
-         @Html.RadioButton("searchBy", "Weight", true) < text > Weight </ text >
+        <b>Search</b>
+        @Html.RadioButton("searchBy", "Weight", true) <text> Weight </text>
 
-         @Html.RadioButton("searchBY", "Volume", true) <text> Volume </text>
+        @Html.RadioButton("searchBY", "Volume", true) <text> Volume </text>
 
-         @Html.RadioButton("searchBy", "Cost", true) <text> Cost </text>
+        @Html.RadioButton("searchBy", "Cost", true) <text> Cost </text>
     }
 
 </body>
