@@ -23,6 +23,9 @@
 			@Html.DisplayNameFor(model => model.CanHoldLiquid)
 		</th>
 		<th>
+			@Html.DisplayNameFor(model=> model.Cost)
+		</th>
+		<th>
 			@Html.DisplayNameFor(model => model.CreatedAt)
 		</th>
 		<th></th>
@@ -39,6 +42,9 @@
 			</td>
 			<td>
 				@Html.DisplayFor(modelItem => item.CanHoldLiquid)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Cost)
 			</td>
 			<td>
 				@Html.DisplayFor(modelItem => item.CreatedAt)
