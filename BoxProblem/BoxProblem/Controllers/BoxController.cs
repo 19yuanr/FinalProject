@@ -61,6 +61,41 @@ namespace BoxProblem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(BoxInventory box)
         {
+
+            return View(service.GetAllBoxes());
+
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        public ActionResult Delete(int id){
+            BoxInventory box = service.GetBoxById(id);
+            return View(box);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(BoxInventory box){
+            if(ModelState.IsValid)
+            {
+                service.AddBox(box);
+                return RedirectToAction("Index");
+            }
+            return View(box);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            BoxInventory box = service.GetBoxById(id);
+            service.DeleteBox(box);
+            return RedirectToAction("Index");
+        }
+    }
+}
+
             if (ModelState.IsValid && box.Cost > 0 && box.Volume > 0 && box.Weight > 0)
             {
                 service.AddBox(box);
@@ -70,3 +105,4 @@ namespace BoxProblem.Controllers
         }
     }
 }
+
