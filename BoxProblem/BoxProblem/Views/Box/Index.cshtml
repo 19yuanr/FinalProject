@@ -10,7 +10,7 @@
     <div class="row">
         @Html.ActionLink("Create New", "Create")
     </div>
-    <input type="search"/>
+
     @using (Html.BeginForm("Index", "Box", FormMethod.Get))
     {
         <b>Search</b>
@@ -20,6 +20,8 @@
 
         @Html.RadioButton("searchBy", "Cost", true) <text> Cost </text>
     }
+    <input type="search" placeholder="Enter Value" />
+    <input type="submit" />
 
 </body>
 <table class="table">
