@@ -1,7 +1,8 @@
-﻿using System;
+using BoxProblem.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using BoxProblem.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace BoxProblem.Repositories
 {
@@ -9,15 +10,14 @@ namespace BoxProblem.Repositories
     {
         private Data.ApplicationDbContext dbContext;
 
-        public List<BoxInventory> GetAllBoxes()
-        {
-            return dbContext.Boxes.ToList();
-        }
         public BoxRepository(ApplicationDbContext context)
         {
             dbContext = context;
         }
-
+        public List<BoxInventory> GetAllBoxes()
+        {
+            return dbContext.Boxes.ToList();
+        }
         public void AddBox(BoxInventory toAdd){
             dbContext.Boxes.Add(toAdd);
             dbContext.SaveChanges();
@@ -29,6 +29,9 @@ namespace BoxProblem.Repositories
         public BoxInventory GetBoxById(int id){
             return dbContext.Boxes.Find(id);
         }
+        public void SaveEdits(BoxInventory toSave){
+            dbContext.Entry(toSave).State = EntityState.Modified;
+            dbContext.SaveChanges();
+        }
     }
 }
-
