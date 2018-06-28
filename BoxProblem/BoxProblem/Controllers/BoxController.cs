@@ -63,7 +63,6 @@ namespace BoxProblem.Controllers
                 service.AddBox(box);
                 return RedirectToAction("Index");
             }
-            TempData["Message"] = "Invalid Input";
             return View("Create",box);
         }
     }
