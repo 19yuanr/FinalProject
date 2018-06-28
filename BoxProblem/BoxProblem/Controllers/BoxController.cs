@@ -65,7 +65,12 @@ namespace BoxProblem.Controllers
         public ActionResult Create(BoxInventory box)
         {
 
-            return View(service.GetAllBoxes());
+            if (ModelState.IsValid)
+            {
+                service.AddBox(box);
+                return RedirectToAction("Index");
+            }
+            return View(box);
 
         }
         [HttpPost, ActionName("Delete")]
