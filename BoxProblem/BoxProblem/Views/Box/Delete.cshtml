@@ -6,8 +6,14 @@
 
 <h2>Delete</h2>
 <h3>Are you sure you want to delete this?</h3>
+<div class="row">
+    <div class="padding1"></div>
+</div>
+@Html.ActionLink("Back to List", "Index", null, null, new { @class = "btnyellow" } )
+<div class="row">
+    <div class="padding1"></div>
+</div>
 <div>
-    <h4>Box</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -46,8 +52,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btnblue btn-default" /> 
+         
         </div>
     }
 </div>

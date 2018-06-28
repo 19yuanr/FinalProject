@@ -19,8 +19,11 @@
   <ItemGroup>
     <Content Remove="wwwroot\bootstrap.css" />
     <Content Remove="wwwroot\css\bootstrap.css" />
+    <Content Remove="wwwroot\images\cardboard.jpg" />
+    <Content Remove="wwwroot\images\Open-Cardboard-Box.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\css\bootstrap.css" />
+    <None Include="wwwroot\images\Open-Cardboard-Box.png" />
   </ItemGroup>
 </Project>
