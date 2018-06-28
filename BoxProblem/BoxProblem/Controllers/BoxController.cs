@@ -25,14 +25,17 @@ namespace BoxProblem.Controllers
             var finalList = service.GetAllBoxes();
             if (searchBy == "Weight" && search >= 0)
             {
+                finalList = null;
                 finalList = service.GetAllBoxes().Where(s => s.Weight == search).ToList();
             }
             if (searchBy == "Volume" && search >= 0)
             {
+                finalList = null;
                 finalList = service.GetAllBoxes().Where(s => s.Volume == search).ToList();
             }
             if (searchBy == "Cost" && search >= 0)
             {
+                finalList = null;
                 finalList = service.GetAllBoxes().Where(s => s.Cost == search).ToList();
             }
 
