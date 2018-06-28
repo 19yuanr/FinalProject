@@ -1,5 +1,4 @@
-
-﻿using BoxProblem.Data;
+using BoxProblem.Data;
 using BoxProblem.Repositories;
 using System;
 using System.Collections.Generic;
@@ -19,10 +18,6 @@ namespace BoxProblem.Services
         {
             return repository.GetAllBoxes();
 
-        }
-        public BoxService(ApplicationDbContext context)
-        {
-            repository = new BoxRepository(context);
         }
 
         public void AddBox(BoxInventory toAdd)

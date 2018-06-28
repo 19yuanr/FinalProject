@@ -1,5 +1,4 @@
-
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +13,11 @@ namespace BoxProblem.Controllers
     public class BoxController : Controller
     {
         private BoxService service;
-
-        public BoxController(ApplicationDbContext context){
+        private Data.ApplicationDbContext dbContext;
+        public BoxController(ApplicationDbContext context)
+        {
             service = new BoxService(context);
+            dbContext = context;
         }
         public ActionResult Index(string searchBy, int search)
         {
@@ -43,28 +44,29 @@ namespace BoxProblem.Controllers
 
         }
 
+       
+
         public ActionResult Create()
         {
             return View();
         }
+
+
         public ActionResult Delete(int id){
             BoxInventory box = service.GetBoxById(id);
             return View(box);
         }
-        public ActionResult Edit(int id){
+         public ActionResult Edit(int id){
             BoxInventory box = service.GetBoxById(id);
             return View(box);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(BoxInventory box){
-            if(ModelState.IsValid)
-            {
-                service.AddBox(box);
-                return RedirectToAction("Index");
-            }
-            return View(box);
+        public ActionResult Create(BoxInventory box)
+        {
+
+            return View(service.GetAllBoxes());
+
         }
         [HttpPost]
         public ActionResult Edit(BoxInventory box){
@@ -74,6 +76,7 @@ namespace BoxProblem.Controllers
             }
             return View(box);
         }
+
     }
 }
 
