@@ -13,21 +13,25 @@ namespace BoxProblem.Controllers
     public class BoxController : Controller
     {
         private BoxService service;
-        public ActionResult Index(int search1, bool? search2, string search3)
+        public ActionResult Index(int search1, bool? search2, string search3, double search4)
         {
 
             List<BoxInventory> finalList = service.GetAllBoxes();
             if (search1 != 0)
             {
-                finalList = service.Search(search1);
+                finalList = service.SearchWeightVolume(search1);
             }
             if (search2 != null)
             {
-                finalList = service.Search(search2);
+                finalList = service.SearchCanHoldLiquid(search2);
             }
             if (search2 != null)
             {
                 finalList = service.Search(search3);
+            }
+            if(search4 != 0.0)
+            {
+                finalList = service.SearchCost(search4);
             }
             return View(finalList);
 

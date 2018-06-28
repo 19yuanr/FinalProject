@@ -12,6 +12,7 @@ namespace BoxProblem.Repositories
 
         public BoxRepository(ApplicationDbContext context)
         {
+            dbContext = context;
         }
 
         public List<BoxInventory> SearchWeight(int temp)
@@ -26,7 +27,7 @@ namespace BoxProblem.Repositories
             return results.ToList();
         }
 
-        public List<BoxInventory> SearchCanHoldLiquid(bool temp)
+        public List<BoxInventory> SearchCanHoldLiquid(bool? temp)
         {
             var results = dbContext.Boxes.Where(s => s.CanHoldLiquid == temp);
             return results.ToList();
@@ -47,11 +48,6 @@ namespace BoxProblem.Repositories
         {
             return dbContext.Boxes.ToList();
         }
-        public BoxRepository(ApplicationDbContext context)
-        {
-            dbContext = context;
-        }
-
         public void AddBox(BoxInventory toAdd){
             dbContext.Boxes.Add(toAdd);
             dbContext.SaveChanges();
