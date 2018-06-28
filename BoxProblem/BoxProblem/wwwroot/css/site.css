@@ -1,27 +1,29 @@
 ﻿.style {
-	background-color: white;
-	//font-family: 'Jura', sans-serif;
+    background-color: white;
+    //font-family: 'Jura', sans-serif;
 }
 
 .header {
-	font-family: 'Quattrocento Sans', sans-serif;
-	padding-top: 30px;
-	font-size: 40px;
+    font-family: 'Quattrocento Sans', sans-serif;
+    padding-top: 30px;
+    font-size: 40px;
 }
+
 a.button {
-	-webkit-appearance: button;
-	-moz-appearance: button;
-	text-decoration: none;
-	color: darkred;
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    text-decoration: none;
+    color: darkred;
 }
 
 .bottom {
-	border-width: 5px;
+    border-width: 5px;
 }
 
 .top {
-	border-width: 5px
+    border-width: 5px
 }
+
 .btnblue {
     border-width: 2px;
     border-style: solid;
@@ -42,20 +44,23 @@ a.button {
         color: white;
         text-decoration: none;
     }
+
 .padding1 {
     padding-top: 25px;
 }
-.table {
 
-    
+.table {
 }
+
 .tr1 {
     background-color: #6E8898;
     color: white;
 }
+
 .tr2:nth-child(even) {
     background-color: #D3D0CB;
 }
+
 .btnyellow {
     border-width: 2px;
     border-style: solid;
@@ -70,8 +75,49 @@ a.button {
     padding: 10px 20px 10px 20px;
     text-decoration: none;
 }
-.btnyellow:hover {
+
+    .btnyellow:hover {
+        background: #E2C044;
+        color: white;
+        text-decoration: none;
+    }
+
+.btnsearch {
+    overflow: visible;
+    position: relative;
+    border: 0;
+    padding: 5;
+    cursor: pointer;
+    color: #fff;
+    text-transform: uppercase;
     background: #E2C044;
-    color: white;
-    text-decoration: none;
+    -moz-border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+}
+
+    .btnsearch:hover {
+        background: #E2C044;
+        color: white;
+        text-decoration: none;
+    }
+
+    .padding2{
+        padding-top: 30px;
+    }
+
+.searchBar {
+
+}
+.search {
+    width: 210px;
+    height: 20px;
+    padding: 10px 5px;
+    float: left;
+    font-style: italic;
+    border: 0;
+    background: #eee;
+    -moz-border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
 }
