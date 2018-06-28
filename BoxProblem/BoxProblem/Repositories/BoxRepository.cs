@@ -9,26 +9,40 @@ namespace BoxProblem.Repositories
     {
         private Data.ApplicationDbContext dbContext;
 
-        public List<BoxInventory> GetAllBoxes()
-        {
-            return dbContext.Boxes.ToList();
-        }
         public BoxRepository(ApplicationDbContext context)
         {
-            dbContext = context;
         }
 
-        public void AddBox(BoxInventory toAdd){
-            dbContext.Boxes.Add(toAdd);
-            dbContext.SaveChanges();
+        public List<BoxInventory> SearchWeight(int temp)
+        {
+            var results = dbContext.Boxes.Where(s => s.Weight == temp);
+            return results.ToList();
         }
-        public void DeleteBox (BoxInventory toDelete){
-            dbContext.Boxes.Remove(toDelete);
-            dbContext.SaveChanges();
+
+        public List<BoxInventory> SearchVolume(int temp)
+        {
+            var results = dbContext.Boxes.Where(s => s.Volume == temp);
+            return results.ToList();
         }
-        public BoxInventory GetBoxById(int id){
-            return dbContext.Boxes.Find(id);
+
+        public List<BoxInventory> SearchCanHoldLiquid(bool temp)
+        {
+            var results = dbContext.Boxes.Where(s => s.CanHoldLiquid == temp);
+            return results.ToList();
         }
+
+        public List<BoxInventory> SearchCost(double temp)
+        {
+            var results = dbContext.Boxes.Where(s => s.Cost == temp);
+            return results.ToList();
+        }
+        
+        public List<BoxInventory> SearchDateTime(DateTime temp)
+        {
+            var results = dbContext.Boxes.Where(s => s.CreatedAt == temp);
+            return results.ToList();
+        }
+
     }
 }
 
