@@ -24,12 +24,15 @@ namespace BoxProblem.Services
         {
             repository.AddBox(toAdd);
         }
+
         public BoxInventory GetBoxById(int id){
             return repository.GetBoxById(id);
         }
+
         public void DeleteBox(BoxInventory toDelete){
             repository.DeleteBox(toDelete);
         }
+
         public void SaveEdits(BoxInventory toSave){
             repository.SaveEdits(toSave);
         }
