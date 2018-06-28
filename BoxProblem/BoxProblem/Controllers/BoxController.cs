@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -56,7 +56,10 @@ namespace BoxProblem.Controllers
             BoxInventory box = service.GetBoxById(id);
             return View(box);
         }
-
+         public ActionResult Edit(int id){
+            BoxInventory box = service.GetBoxById(id);
+            return View(box);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(BoxInventory box)
@@ -73,6 +76,15 @@ namespace BoxProblem.Controllers
             service.DeleteBox(box);
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public ActionResult Edit(BoxInventory box){
+          if (ModelState.IsValid){
+                service.SaveEdits(box);
+                return RedirectToAction("Index");
+            }
+            return View(box);
+        }
 
     }
 }
+

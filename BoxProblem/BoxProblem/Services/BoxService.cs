@@ -1,4 +1,4 @@
-﻿using BoxProblem.Data;
+using BoxProblem.Data;
 using BoxProblem.Repositories;
 using System;
 using System.Collections.Generic;
@@ -30,6 +30,8 @@ namespace BoxProblem.Services
         public void DeleteBox(BoxInventory toDelete){
             repository.DeleteBox(toDelete);
         }
+        public void SaveEdits(BoxInventory toSave){
+            repository.SaveEdits(toSave);
+        }
     }
 }
-
