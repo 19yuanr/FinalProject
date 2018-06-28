@@ -14,7 +14,6 @@ namespace BoxProblem.Services
         {
             repository = new BoxRepository(context);
         }
-
         public List<BoxInventory> GetAllBoxes()
         {
             return repository.GetAllBoxes();

@@ -9,13 +9,33 @@ namespace BoxProblem.Repositories
     public class BoxRepository
     {
         private Data.ApplicationDbContext dbContext;
-
         public BoxRepository(ApplicationDbContext context)
         {
             dbContext = context;
         }
+        public List<BoxInventory> SearchWeight(int temp)
+        {
+            var results = dbContext.Boxes.Where(s => s.Weight == temp);
+            return results.ToList();
+        }
 
-        
+        public List<BoxInventory> SearchVolume(int temp)
+        {
+            var results = dbContext.Boxes.Where(s => s.Volume == temp);
+            return results.ToList();
+        }
+
+        public List<BoxInventory> SearchCanHoldLiquid(bool temp)
+        {
+            var results = dbContext.Boxes.Where(s => s.CanHoldLiquid == temp);
+            return results.ToList();
+        }
+
+        public List<BoxInventory> SearchCost(double temp)
+        {
+            var results = dbContext.Boxes.Where(s => s.Cost == temp);
+            return results.ToList();
+        }        
         public List<BoxInventory> GetAllBoxes()
         {
             return dbContext.Boxes.ToList();

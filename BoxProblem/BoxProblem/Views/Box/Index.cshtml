@@ -3,14 +3,13 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<body class="style">
-    <hr class="=top" />
+<div class="style">
+    <hr class="top" />
     <h1 class="header">Cardboard Box Making Company</h1>
     <hr class="bottom" />
     <div class="row">
         @Html.ActionLink("Create New", "Create")
     </div>
-
     @using (Html.BeginForm("Index", "Box", FormMethod.Get))
     {
         <b>Search</b>
@@ -27,6 +26,7 @@
 
 
 </body>
+
 <table class="table">
     <tr>
         <th>
