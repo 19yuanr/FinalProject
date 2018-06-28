@@ -11,12 +11,15 @@ namespace BoxProblem.Data
         [Key]
         public int Id { get; set; }
 
+        [Range(0,1000)]
         public int Weight { get; set; }
 
+        [Range(0,20000)]
         public int Volume { get; set; }
 
         public bool CanHoldLiquid { get; set; }
 
+        [Range(0,999999999)]
         public double Cost { get; set; }
 
         public int InventoryCount { get; set; }
