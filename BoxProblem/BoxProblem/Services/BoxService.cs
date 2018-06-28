@@ -19,10 +19,6 @@ namespace BoxProblem.Services
             return repository.GetAllBoxes();
 
         }
-        public BoxService(ApplicationDbContext context)
-        {
-            repository = new BoxRepository(context);
-        }
 
         public void AddBox(BoxInventory toAdd)
         {
