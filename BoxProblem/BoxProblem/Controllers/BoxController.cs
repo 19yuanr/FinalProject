@@ -22,21 +22,22 @@ namespace BoxProblem.Controllers
         public ActionResult Index(string searchBy, int search)
         {
 
-            var finalList = service.GetAllBoxes();
-            if (searchBy == "Weight" && search >= 0)
+            List<BoxInventory> finalList = service.GetAllBoxes();
+            if (searchBy == "Weight")
             {
-                finalList = null;
                 finalList = service.GetAllBoxes().Where(s => s.Weight == search).ToList();
             }
-            if (searchBy == "Volume" && search >= 0)
+            if (searchBy == "Volume")
             {
-                finalList = null;
                 finalList = service.GetAllBoxes().Where(s => s.Volume == search).ToList();
             }
-            if (searchBy == "Cost" && search >= 0)
+            if (searchBy == "Cost" )
             {
-                finalList = null;
                 finalList = service.GetAllBoxes().Where(s => s.Cost == search).ToList();
+            }
+            if(searchBy=="Reset")
+            {
+                finalList = service.GetAllBoxes();
             }
 
             return View(finalList);

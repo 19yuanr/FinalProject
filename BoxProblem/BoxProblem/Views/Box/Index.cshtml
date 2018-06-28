@@ -19,7 +19,9 @@
         @Html.RadioButton("searchBY", "Volume", true) <text> Volume </text>
 
         @Html.RadioButton("searchBy", "Cost", true) <text> Cost </text>
-        <input type="search" placeholder="Enter Value" />
+
+        @Html.RadioButton("searchBy", "Reset", true)<text>Reset</text>
+        <input type="search" name="search" placeholder="Enter Value" />
         <input type="submit" />
     }
 
