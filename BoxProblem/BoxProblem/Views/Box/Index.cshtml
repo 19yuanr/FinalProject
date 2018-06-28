@@ -18,28 +18,30 @@
 
     <hr class="bottom" />
     <div class="row">
-        <div class="col-md-3 col-md-offset-9">
-            @Html.ActionLink("Create New", "Create", "Box", null, new { @class = "btnblue" })
-        </div>       
-    </div>
-    <div class="row">
-        <div class="padding1"></div>
-    </div>
-     @using (Html.BeginForm("Index", "Box", FormMethod.Get))
+
+
+        <div class="col-md-10">
+        @using (Html.BeginForm("Index", "Box", FormMethod.Get))
     {
         <b>Search</b>
         @Html.RadioButton("searchBy", "Weight", true) <text> Weight </text>
 
         @Html.RadioButton("searchBY", "Volume", true) <text> Volume </text>
-
+            
         @Html.RadioButton("searchBy", "Cost", true) <text> Cost </text>
-
+            
         @Html.RadioButton("searchBy", "Reset", true)<text>Reset</text>
-        <input type="search" name="search" placeholder="Enter Value" />
-        <input type="submit" />
-    }
+        <input class="search" type="search" name="search" placeholder="Enter Value" />
 
+        <input class="btnsearch" type="submit" />
 
+}
+            </div>
+        <div class="col-md-2">
+            @Html.ActionLink("Create New", "Create", "Box", null, new { @class = "btnblue" })
+        </div>
+
+    </div>
 <table class="table">
 	<tr class="tr1">
 		<th>
