@@ -3,14 +3,29 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<div class="style">
-    <hr class="top" />
-    <h1 class="header">Cardboard Box Making Company</h1>
+
+
+
+    <div class="row">
+        <div class="col-md-10">
+            <h1 class="header">Cardboard Box Making Company</h1>
+        </div>
+        <div class="col-md-2">
+            <img src="~/images/Open-Cardboard-Box.png" />
+        </div>
+
+    </div>
+
     <hr class="bottom" />
     <div class="row">
-        @Html.ActionLink("Create New", "Create")
+        <div class="col-md-3 col-md-offset-9">
+            @Html.ActionLink("Create New", "Create", "Box", null, new { @class = "btnblue" })
+        </div>       
     </div>
-    @using (Html.BeginForm("Index", "Box", FormMethod.Get))
+    <div class="row">
+        <div class="padding1"></div>
+    </div>
+     @using (Html.BeginForm("Index", "Box", FormMethod.Get))
     {
         <b>Search</b>
         @Html.RadioButton("searchBy", "Weight", true) <text> Weight </text>
@@ -24,58 +39,46 @@
         <input type="submit" />
     }
 
-</div>
 
 <table class="table">
+	<tr class="tr1">
+		<th>
+			Weight
+		</th>
+		<th>
+			Volume
+		</th>
+		<th>
+			Can Hold Liquid
+		</th>
+		<th>
+			Created At
+		</th>
+		<th></th>
+	</tr>
 
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Weight)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Volume)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CanHoldLiquid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InventoryCount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cost)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </th>
-        <th></th>
-    </tr>
+	@foreach (var item in Model)
+	{
+		<tr class="tr2">
+			<td>
+				@Html.DisplayFor(modelItem => item.Weight)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Volume)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CanHoldLiquid)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.CreatedAt)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+			</td>
+		</tr>
+	}
+   
 
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Weight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Volume)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CanHoldLiquid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InventoryCount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedAt)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-        </td>
-    </tr>
-    }
 
 </table>

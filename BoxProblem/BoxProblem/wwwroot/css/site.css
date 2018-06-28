@@ -1,19 +1,13 @@
 ﻿.style {
-	background-color: #2980b9;
+	background-color: white;
 	//font-family: 'Jura', sans-serif;
 }
 
 .header {
 	font-family: 'Quattrocento Sans', sans-serif;
-	padding-top: 100px;
+	padding-top: 30px;
 	font-size: 40px;
 }
-
-.row {
-	font-size: 32px;
-	margin: 10%;
-}
-
 a.button {
 	-webkit-appearance: button;
 	-moz-appearance: button;
@@ -27,4 +21,57 @@ a.button {
 
 .top {
 	border-width: 5px
+}
+.btnblue {
+    border-width: 2px;
+    border-style: solid;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    border-color: #2E5266;
+    font-family: Arial;
+    color: #2E5266;
+    font-size: 20px;
+    background: white;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+    .btnblue:hover {
+        background: #2E5266;
+        color: white;
+        text-decoration: none;
+    }
+.padding1 {
+    padding-top: 25px;
+}
+.table {
+
+    
+}
+.tr1 {
+    background-color: #6E8898;
+    color: white;
+}
+.tr2:nth-child(even) {
+    background-color: #D3D0CB;
+}
+.btnyellow {
+    border-width: 2px;
+    border-style: solid;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    border-color: #E2C044;
+    font-family: Arial;
+    color: #E2C044;
+    font-size: 20px;
+    background: white;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+.btnyellow:hover {
+    background: #E2C044;
+    color: white;
+    text-decoration: none;
 }
