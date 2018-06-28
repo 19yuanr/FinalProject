@@ -9,7 +9,10 @@ namespace BoxProblem.Repositories
     public class BoxRepository
     {
         private Data.ApplicationDbContext dbContext;
-
+        public BoxRepository(ApplicationDbContext context)
+        {
+            dbContext = context;
+        }
         public List<BoxInventory> SearchWeight(int temp)
         {
             var results = dbContext.Boxes.Where(s => s.Weight == temp);
@@ -32,22 +35,11 @@ namespace BoxProblem.Repositories
         {
             var results = dbContext.Boxes.Where(s => s.Cost == temp);
             return results.ToList();
-        }
-        
-        public List<BoxInventory> SearchDateTime(DateTime temp)
-        {
-            var results = dbContext.Boxes.Where(s => s.CreatedAt == temp);
-            return results.ToList();
-        }
+        }        
         public List<BoxInventory> GetAllBoxes()
         {
             return dbContext.Boxes.ToList();
         }
-        public BoxRepository(ApplicationDbContext context)
-        {
-            dbContext = context;
-        }
-
         public void AddBox(BoxInventory toAdd){
             dbContext.Boxes.Add(toAdd);
             dbContext.SaveChanges();
