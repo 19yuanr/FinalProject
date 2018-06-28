@@ -51,6 +51,12 @@
 		<th>
 			Can Hold Liquid
 		</th>
+        <th>
+            Cost
+        </th>
+        <th>
+            Inventory Count
+        </th>
 		<th>
 			Created At
 		</th>
@@ -69,6 +75,12 @@
 			<td>
 				@Html.DisplayFor(modelItem => item.CanHoldLiquid)
 			</td>
+            <td>
+                @Html.DisplayFor(modelIten => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InventoryCount)
+            </td>
 			<td>
 				@Html.DisplayFor(modelItem => item.CreatedAt)
 			</td>
